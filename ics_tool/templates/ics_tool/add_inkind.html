@@ -145,7 +145,8 @@
             </div>
             <div class="form-group">
               <label class="col-sm-2" for="DonationDate">Donation Date</label>
-              <div class="col-sm-4"><input class="form-control" id="datepicker" name="DonationDate" placeholder="DonationDate" type="text" required></div>
+              <div class="col-sm-4"><input class="form-control" id="datepicker" name="DonationDate" placeholder="DonationDate" type="text" required><span class="input-group-addon">
+		      <span class="glyphicon glyphicon-calendar fa fa-calendar"></span></span></div>
             </div>
 	        <div class="form-group">
               <label class="col-sm-2" for="Donation Amount">Donation Amount</label>
@@ -195,7 +196,7 @@
                  showButtonPanel: true,
                  dateFormat: 'dd MM yy',
            onClose: function(dateText, inst) {
-               $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+               $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth,inst.selectedDate));
            }
 		    });
 	    } );
