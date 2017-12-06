@@ -28,20 +28,6 @@
     <!-- Custom Fonts -->
     <link href="{% static "ics_tool/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
 	
-	<script type="text/javascript">
-	    $(document).ready(function() {
-		    $( "#datepicker" ).datepicker({
-			     changeMonth: true,
-			     changeYear: true,
-                 showButtonPanel: true,
-                 dateFormat: 'MM yy',
-           onClose: function(dateText, inst) {
-               $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-           }
-		    });
-	    } );
-      </script>
-
 </head>
 
 <body>
@@ -188,7 +174,20 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "ics_tool/js/bootstrap.min.js" %}"></script>
-
+     
+    <script type="text/javascript">
+	    $(document).ready(function() {
+		    $( "#datepicker" ).datepicker({
+			     changeMonth: true,
+			     changeYear: true,
+                 showButtonPanel: true,
+                 dateFormat: 'dd MM yy',
+           onClose: function(dateText, inst) {
+               $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+           }
+		    });
+	    } );
+      </script>
 </body>
 
 </html>
