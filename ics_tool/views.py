@@ -175,7 +175,7 @@ def add_inkind(request):
           Donor = Donors.objects.all()
           for list in Donor:
               a ={}
-              a['Donor']   = list.FirstName + ' ' + list.LastName + '|' + list.Email
+              a['Donor']   = list.FirstName + ' ' + list.LastName + ' | ' + list.Email
               a['DonorId'] = list.id
               results.append(a)
           return render(request, template_name,{'Results': results})	 
