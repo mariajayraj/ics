@@ -189,10 +189,10 @@ def add_inkind(request):
        Description    = request.POST.get('Description', '')
 	
        try:
-         LoadDonationsObj = Donations(donor_id_id=Donors.objects.get(pk=int(Donor)),donation_date=DonationDate,comments=Description)
+         LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=Description)
          LoadDonationsObj.save()
          donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
-         LoadInkindObj    = InKind(donationID_id=Donations.objects.get(pk=LoadDonationsObj.pk),description=Description,approxValue=DonationAmount)
+         LoadInkindObj    = InKind(donationID_id=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
          return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
        except Exception as e:
          return render(request,'ics_tool/add_inkind.html',{'Error':e})
