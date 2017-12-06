@@ -31,7 +31,6 @@ class SearchDonor(models.Model):
     SearchQuery        = models.CharField(max_length=255)
 
 class Donations(models.Model):
-    donationID    = models.IntegerField(primary_key=True)
     donor_id      = models.ForeignKey(Donors)
     donation_date = models.DateField()
     comments      = models.CharField(max_length=100)
