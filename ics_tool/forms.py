@@ -47,26 +47,14 @@ class FeedbackForm(forms.ModelForm):
         model = SearchDonor
         fields = '__all__'
 
-class AddDonationsForm(forms.ModelForm):
-    SelectDonor     = forms.CharField(max_length=100)
-    FirstName       = forms.CharField(max_length=100)
-    LastName        = forms.CharField(max_length=100)
-    DonorID         = forms.IntegerField()
-    OrganizationName = forms.CharField(max_length=100)
-    StreetAddress   = forms.CharField(max_length=100)
-    City            = forms.CharField(max_length=100)
-    State           = forms.CharField(max_length=100)
-    Zip             = forms.CharField(max_length=100)
-    PhoneNumber     = forms.CharField(max_length=15)
-    Email           = forms.EmailField(max_length=100)
-    Comments        = forms.CharField(max_length=225)
-    DonationDate    = forms.DateField()
-    TotalPounds     = forms.IntegerField()
-    PurchasedbyICS  = forms.BooleanField(required=False)
-    DonationComments = forms.CharField(max_length=225)
-    Category        = forms.CharField(max_length=100)
-    Pounds          = forms.IntegerField()
-
+class AddInkindForm(forms.ModelForm):
+    Donor          = forms.CharField(max_length=100)
+    DonationDate   = forms.DateField()
+    DonationAmount = forms.IntegerField()
+    Description    = forms.CharField(max_length=100,required=False)
+    
     class Meta:
-        model = Donors
+        model = InKind
         fields = '__all__'
+        
+        
