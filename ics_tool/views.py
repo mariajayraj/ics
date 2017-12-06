@@ -179,8 +179,8 @@ def add_inkind(request):
               a['DonorId'] = list.id
               results.append(a)
           return render(request, template_name,{'Results': results})	 
-       except:
-          return render(request, template_name,{'Error':'No Donors Available.'})
+       except Exception as e:
+          return render(request, template_name,{'Error': e})
 
     form = AddInkindForm(request.POST)
     if form.is_valid():
