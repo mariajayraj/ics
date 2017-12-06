@@ -187,15 +187,7 @@
      
     <script type="text/javascript">
 	    $(document).ready(function() {
-		    $( "#datepicker" ).datepicker({
-			     changeMonth: true,
-			     changeYear: true,
-                 showButtonPanel: true,
-                 dateFormat: 'dd MM yy',
-           onClose: function(dateText, inst) {
-               $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth,inst.selectedDate));
-           }
-		    });
+		    $( "#datepicker" ).datepicker();
 	    } );
       </script>
 </body>
