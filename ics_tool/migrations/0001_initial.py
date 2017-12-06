@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Donations',
             fields=[
-                ('donationID', models.IntegerField(primary_key=True, serialize=False)),
+                ('donationID', models.AutoField(primary_key=True, serialize=False)),
                 ('donation_date', models.DateField()),
                 ('comments', models.CharField(max_length=100)),
             ],
