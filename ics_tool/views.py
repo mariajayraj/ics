@@ -184,7 +184,7 @@ def add_inkind(request):
 
     if request.method == 'POST':
        Donor          = request.POST.get('Donor', '')
-       DonationDate   = request.POST.get('DonationDate', '')
+       DonationDate   = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%y').strftime('%Y-%m-%d')
        DonationAmount = request.POST.get('DonationAmount', '')
        Description    = request.POST.get('Description', '')
 	
