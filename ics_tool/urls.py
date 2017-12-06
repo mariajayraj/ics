@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^add_donations', donations.add_donations, name='add_donations'),
     url(r'^login/$', user_views.user_login, name='login'),
     url(r'^logout', user_views.user_logout, name='logout'),
+    url(r'^add_inkind', views.add_inkind, name='add_inkind'),
+    url(r'^add_items', views.add_items, name='add_items'),
+    url(r'^add_events', views.add_events, name='add_events'),
 
 ]
 
