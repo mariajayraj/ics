@@ -202,3 +202,18 @@ def add_items(request):
 
 def add_events(request):
     return HttpResponse("3")
+
+def donor_report(request):
+    Donor = Donors.objects.all()
+    results = []
+       for list in Donor:
+           a ={}
+           a['FN']   = list.FirstName 
+	   a['LN']   = list.LastName 
+	   a['EM']   = list.Email
+           a['PN'] = list.PhoneNumber
+           a['AD'] = list.StreetAddress + ',' + list.City
+           results.append(a)
+       return render(request, 'ics_tool/donor_report.html',{'Results': results})
+
+
