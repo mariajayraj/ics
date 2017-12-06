@@ -194,7 +194,7 @@ def add_inkind(request):
          LoadInkindObj    = InKind(donationID=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
          return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
        except Exception as e:
-         return render(request,'ics_tool/add_inkind.html',{'Error':form.errors})
+         return render(request,'ics_tool/add_inkind.html',{'Error':e})
 
 def add_items(request):
     return HttpResponse("3")
