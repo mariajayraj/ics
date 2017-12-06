@@ -118,7 +118,6 @@
         <form action="{% url 'ics_tool:add_inkind' %}" method="post" enctype="multipart/form-data" class="form-horizontal">
 
         {% csrf_token %}
-	     <div class="col-lg-9">	
 	    {% if Error %}
             <div class="alert alert-danger fade in">
               <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -131,7 +130,6 @@
 	    <strong>Success!</strong> The Donation has been successfully added.
 	    </div>
             {% endif %}
-            </div>	
 	
             <div class="form-group">
               <label class="col-sm-2" for="Donor">Donor</label>
