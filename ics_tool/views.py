@@ -164,3 +164,38 @@ def feedback(request):
     print(form.errors)
 
     return render(request,'ics_tool/home.html',{})
+
+@login_required
+def add_inkind(request):
+    template_name = 'ics_tool/add_inkind.html'
+
+    if request.method == "GET":
+	   results = []
+	   try:
+	      Donors = Donors.objects.all()
+	      for list in Donors:
+	         a ={}
+		     a['Donor']   = list.FirstName + ' ' + list.LastName + '|' + list.Email
+             a['DonorId'] = list.id
+		     results.append(a)
+		  return render(request, template_name,{'Results': results})	 
+       except:
+	      return render(request, template_name,{'Error':'No Donors Available.'})
+
+    form = AddInkindForm(request.POST)
+    if form.is_valid():
+      Donor          = request.POST.get('Donor', '')
+      DonationDate   = request.POST.get('DonationDate', '')
+      DonationAmount = request.POST.get('DonationAmount', '')
+      Description    = request.POST.get('Description', '')
+
+      LoadDonationsObj = Donations(donor_id=Donor,donation_date=DonationDate,comments=Description)
+      LoadDonationsObj.save()
+	  
+	  LoadInkindObj    = InKind(donationID=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
+
+      return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
+
+    print(form.errors)
+
+    return render(request,'ics_tool/add_inkind.html',{'Errpr':form.errors})
