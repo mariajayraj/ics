@@ -170,17 +170,17 @@ def add_inkind(request):
     template_name = 'ics_tool/add_inkind.html'
 
     if request.method == "GET":
-	   results = []
-	   try:
-	      Donors = Donors.objects.all()
-	      for list in Donors:
-	         a ={}
-		     a['Donor']   = list.FirstName + ' ' + list.LastName + '|' + list.Email
-             a['DonorId'] = list.id
-		     results.append(a)
-		  return render(request, template_name,{'Results': results})	 
+       results = []
+       try:
+          Donors = Donors.objects.all()
+          for list in Donors:
+              a ={}
+              a['Donor']   = list.FirstName + ' ' + list.LastName + '|' + list.Email
+              a['DonorId'] = list.id
+              results.append(a)
+          return render(request, template_name,{'Results': results})	 
        except:
-	      return render(request, template_name,{'Error':'No Donors Available.'})
+          return render(request, template_name,{'Error':'No Donors Available.'})
 
     form = AddInkindForm(request.POST)
     if form.is_valid():
@@ -192,7 +192,7 @@ def add_inkind(request):
       LoadDonationsObj = Donations(donor_id=Donor,donation_date=DonationDate,comments=Description)
       LoadDonationsObj.save()
 	  
-	  LoadInkindObj    = InKind(donationID=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
+      LoadInkindObj    = InKind(donationID=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
 
       return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
 
