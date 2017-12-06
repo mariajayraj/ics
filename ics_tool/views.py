@@ -172,8 +172,8 @@ def add_inkind(request):
     if request.method == "GET":
        results = []
        try:
-          Donors = Donors.objects.all()
-          for list in Donors:
+          Donor = Donors.objects.all()
+          for list in Donor:
               a ={}
               a['Donor']   = list.FirstName + ' ' + list.LastName + '|' + list.Email
               a['DonorId'] = list.id
