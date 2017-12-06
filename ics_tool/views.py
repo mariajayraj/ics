@@ -189,7 +189,7 @@ def add_inkind(request):
        Description    = request.POST.get('Description', '')
 	
        try:
-         LoadDonationsObj = Donations(donor_id=Donor,donation_date=DonationDate,comments=Description)
+         LoadDonationsObj = Donations(donor_id_id=Donors.objects.get(pk=Donor),donation_date=DonationDate,comments=Description)
          LoadDonationsObj.save()
          donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
          LoadInkindObj    = InKind(donationID_id=Donations.objects.get(pk=LoadDonationsObj.pk),description=Description,approxValue=DonationAmount)
