@@ -199,3 +199,9 @@ def add_inkind(request):
     print(form.errors)
 
     return render(request,'ics_tool/add_inkind.html',{'Errpr':form.errors})
+
+def add_items(request):
+    return HttpResponse("3")
+
+def add_events(request):
+    return HttpResponse("3")
