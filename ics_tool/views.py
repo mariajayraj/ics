@@ -19,7 +19,7 @@ from .models import *
 def health(request):
     return HttpResponse("3")
 
-@login_required
+#Harsha@login_required
 def index(request):
     template_name = 'ics_tool/home.html'
 
@@ -39,7 +39,7 @@ def index(request):
     return render(request,'ics_tool/home.html',{})
 
 
-@login_required
+#Harsha@login_required
 def add_donor(request):
     template_name = 'ics_tool/add_donor.html'
 
@@ -79,7 +79,7 @@ def add_donor(request):
 
     return render(request,'ics_tool/add_donor.html',{})
 
-@login_required
+#Harsha@login_required
 def edit_donor(request):
     template_name = 'ics_tool/add_donor.html'
 
@@ -126,7 +126,7 @@ def edit_donor(request):
 
     return render(request,'ics_tool/search_donor.html',{})
 
-@login_required
+#Harsha@login_required
 def search_donor(request):
 
     template_name = 'ics_tool/search_donor.html'
@@ -146,7 +146,7 @@ def search_donor(request):
 
     return render(request,'ics_tool/search_donor.html',{})
 
-@login_required
+#Harsha@login_required
 def feedback(request):
 
     template_name = 'ics_tool/feedback.html'
@@ -165,7 +165,7 @@ def feedback(request):
 
     return render(request,'ics_tool/home.html',{})
 
-@login_required
+#Harsha@login_required
 def add_inkind(request):
     template_name = 'ics_tool/add_inkind.html'
 
