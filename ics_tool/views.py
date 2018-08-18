@@ -198,7 +198,7 @@ def add_inkind(request):
          return render(request,'ics_tool/add_inkind.html',{'Error':e})
 
 def add_items(request):
-     template_name = 'ics_tool/add_items.html'
+    template_name = 'ics_tool/add_items.html'
 
     if request.method == "GET":
        results = []
@@ -215,19 +215,26 @@ def add_items(request):
 
     if request.method == 'POST':
        Donor          = request.POST.get('Donor', '')
+	Grocery      = request.POST.get('Grocery', '')
+    	Meat         = request.POST.get('Meat', '')
+    	Bread        = request.POST.get('Bread', '')
+    	Produce      = request.POST.get('Produce', '')
+    	Toiletries   = request.POST.get('Toiletries', '')
+    	Diaper       = request.POST.get('Diaper', '')
+    	Other        = request.POST.get('Other', '')
+    	TotalPounds  = request.POST.get('TotalPounds', '')
        DonationDate   = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
-	DonationQuantity = request.POST.get('DonationQuantity', '')
-       ItemDescription    = request.POST.get('ItemDescription', '')
+       ItemsDescription    = request.POST.get('ItemsDescription', '')
 	
        try:
-         LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=ItemDescription)
+         LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=Description)
          LoadDonationsObj.save()
          donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
-         LoadItemsObj    = Items(donationID_id=LoadDonationsObj.pk,description=ItemDescription,approxValue=DonationQuantity)
+         LoadItemsObj    = Items(donationID_id=LoadDonationsObj.pk,desc=ItemsDescription,Grocery=Grocery,Meat=Meat,Bread = Bread, 
+				 Produce=Produce,Toiletries=Toiletries,Diaper= Diaper, Other = Other, TotalPounds=TotalPounds)
          return render(request,'ics_tool/add_items.html',{'Success':'Success'})
        except Exception as e:
          return render(request,'ics_tool/add_items.html',{'Error':e})
-
 
 def add_events(request):
     return HttpResponse("3")
