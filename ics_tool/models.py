@@ -42,7 +42,7 @@ class InKind(models.Model):
     isack_sent   = models.BooleanField(default=False)
     approxValue  = models.IntegerField()
 
-class Items(models.Model):
+class CatDonations(models.Model):
     donationID   = models.ForeignKey(Donations)
     Grocery      = models.IntegerField()
     Meat         = models.IntegerField()
