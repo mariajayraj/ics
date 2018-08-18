@@ -223,10 +223,10 @@ def add_items(request):
          LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=ItemDescription)
          LoadDonationsObj.save()
          donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
-         LoadInkindObj    = InKind(donationID_id=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
-         return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
+         LoadItemsObj    = Items(donationID_id=LoadDonationsObj.pk,description=ItemDescription,approxValue=DonationQuantity)
+         return render(request,'ics_tool/add_items.html',{'Success':'Success'})
        except Exception as e:
-         return render(request,'ics_tool/add_inkind.html',{'Error':e})
+         return render(request,'ics_tool/add_items.html',{'Error':e})
 
 
 def add_events(request):
