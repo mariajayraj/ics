@@ -214,7 +214,7 @@ def add_items(request):
           return render(request, template_name,{'Error': e})
 
     if request.method == 'POST':
-       Donor          = request.POST.get('Donor', '')
+        Donor        = request.POST.get('Donor', '')
 	Grocery      = request.POST.get('Grocery', '')
     	Meat         = request.POST.get('Meat', '')
     	Bread        = request.POST.get('Bread', '')
@@ -223,8 +223,8 @@ def add_items(request):
     	Diaper       = request.POST.get('Diaper', '')
     	Other        = request.POST.get('Other', '')
     	TotalPounds  = request.POST.get('TotalPounds', '')
-       DonationDate   = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
-       ItemsDescription    = request.POST.get('ItemsDescription', '')
+        DonationDate = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
+        ItemsDescription = request.POST.get('ItemsDescription', '')
 	
        try:
          LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=Description)
