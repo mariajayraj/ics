@@ -215,14 +215,14 @@ def add_items(request):
 
     if request.method == 'POST':
         Donor        = request.POST.get('Donor', '')
-	 Grocery      = request.POST.get('Grocery', '')
-    	 Meat         = request.POST.get('Meat', '')
-    	 Bread        = request.POST.get('Bread', '')
-    	 Produce      = request.POST.get('Produce', '')
-    	 Toiletries   = request.POST.get('Toiletries', '')
-    	 Diaper       = request.POST.get('Diaper', '')
-    	 Other        = request.POST.get('Other', '')
-    	 TotalPounds  = request.POST.get('TotalPounds', '')
+	Grocery      = request.POST.get('Grocery', '')
+    	Meat         = request.POST.get('Meat', '')
+    	Bread        = request.POST.get('Bread', '')
+    	Produce      = request.POST.get('Produce', '')
+    	Toiletries   = request.POST.get('Toiletries', '')
+    	Diaper       = request.POST.get('Diaper', '')
+    	Other        = request.POST.get('Other', '')
+    	TotalPounds  = request.POST.get('TotalPounds', '')
         DonationDate = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
         ItemsDescription = request.POST.get('ItemsDescription', '')
 	
