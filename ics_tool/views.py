@@ -198,7 +198,36 @@ def add_inkind(request):
          return render(request,'ics_tool/add_inkind.html',{'Error':e})
 
 def add_items(request):
-    return HttpResponse("3")
+     template_name = 'ics_tool/add_items.html'
+
+    if request.method == "GET":
+       results = []
+       try:
+          Donor = Donors.objects.all()
+          for list in Donor:
+              a ={}
+              a['Donor']   = list.FirstName + ' ' + list.LastName + ' | ' + list.Email
+              a['DonorId'] = list.id
+              results.append(a)
+          return render(request, template_name,{'Results': results})	 
+       except Exception as e:
+          return render(request, template_name,{'Error': e})
+
+    if request.method == 'POST':
+       Donor          = request.POST.get('Donor', '')
+       DonationDate   = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
+	DonationQuantity = request.POST.get('DonationQuantity', '')
+       ItemDescription    = request.POST.get('ItemDescription', '')
+	
+       try:
+         LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=ItemDescription)
+         LoadDonationsObj.save()
+         donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
+         LoadInkindObj    = InKind(donationID_id=LoadDonationsObj.pk,description=Description,approxValue=DonationAmount)
+         return render(request,'ics_tool/add_inkind.html',{'Success':'Success'})
+       except Exception as e:
+         return render(request,'ics_tool/add_inkind.html',{'Error':e})
+
 
 def add_events(request):
     return HttpResponse("3")
