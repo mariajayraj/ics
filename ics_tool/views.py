@@ -226,14 +226,14 @@ def add_items(request):
         DonationDate = datetime.datetime.strptime(request.POST.get('DonationDate', ''), '%m/%d/%Y').strftime('%Y-%m-%d')
         ItemsDescription = request.POST.get('ItemsDescription', '')
 	
-       try:
+        try:
          LoadDonationsObj = Donations(donor_id_id=int(Donor),donation_date=DonationDate,comments=Description)
          LoadDonationsObj.save()
          donations = Donations.objects.get(pk=LoadDonationsObj.pk)  
          LoadCatDonationsObj    = CatDonations(donationID_id=LoadDonationsObj.pk,desc=ItemsDescription,Grocery=Grocery,Meat=Meat,Bread = Bread, 
 				 Produce=Produce,Toiletries=Toiletries,Diaper= Diaper, Other = Other, TotalPounds=TotalPounds)
          return render(request,'ics_tool/add_items.html',{'Success':'Success'})
-       except Exception as e:
+        except Exception as e:
          return render(request,'ics_tool/add_items.html',{'Error':e})
 
 def add_events(request):
