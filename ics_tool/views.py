@@ -25,7 +25,7 @@ def index(request):
 
     if request.method == "GET":
         cnt = Donors.objects.count()
-	dnt = Donations.objects.count()
+        dnt = Donations.objects.count()
         return render(request, template_name, {'cnt':cnt, 'dnt':dnt})
 
     form = SearchDataForm(request.POST)
