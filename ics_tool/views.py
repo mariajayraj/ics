@@ -19,7 +19,7 @@ from .models import *
 def health(request):
     return HttpResponse("3")
 
-#Harsha@login_required
+@login_required
 def index(request):
     template_name = 'ics_tool/home.html'
 
@@ -40,7 +40,7 @@ def index(request):
     return render(request,'ics_tool/home.html',{})
 
 
-#Harsha@login_required
+@login_required
 def add_donor(request):
     template_name = 'ics_tool/add_donor.html'
 
@@ -80,7 +80,7 @@ def add_donor(request):
 
     return render(request,'ics_tool/add_donor.html',{})
 
-#Harsha@login_required
+@login_required
 def edit_donor(request):
     template_name = 'ics_tool/add_donor.html'
 
@@ -127,7 +127,7 @@ def edit_donor(request):
 
     return render(request,'ics_tool/search_donor.html',{})
 
-#Harsha@login_required
+@login_required
 def search_donor(request):
 
     template_name = 'ics_tool/search_donor.html'
@@ -147,7 +147,7 @@ def search_donor(request):
 
     return render(request,'ics_tool/search_donor.html',{})
 
-#Harsha@login_required
+@login_required
 def feedback(request):
 
     template_name = 'ics_tool/feedback.html'
@@ -166,7 +166,7 @@ def feedback(request):
 
     return render(request,'ics_tool/home.html',{})
 
-#Harsha@login_required
+@login_required
 def add_inkind(request):
     template_name = 'ics_tool/add_inkind.html'
 
@@ -198,6 +198,8 @@ def add_inkind(request):
        except Exception as e:
          return render(request,'ics_tool/add_inkind.html',{'Error':e})
 
+	
+@login_required
 def add_items(request):
     template_name = 'ics_tool/add_items.html'
 
@@ -240,6 +242,7 @@ def add_items(request):
 def add_events(request):
     return HttpResponse("3")
 
+@login_required
 def donor_report(request):
     Donor = Donors.objects.all()
     results = []
@@ -253,6 +256,7 @@ def donor_report(request):
         results.append(a)
     return render(request, 'ics_tool/donor_report.html',{'Results': results})
 
+@login_required
 def donation_report(request):
 	
 	CatDonation = CatDonations.objects.all()
