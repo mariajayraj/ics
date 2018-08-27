@@ -25,7 +25,8 @@ def index(request):
 
     if request.method == "GET":
         cnt = Donors.objects.count()
-        return render(request, template_name, {'cnt':cnt})
+	dnt = Donations.objects.count()
+        return render(request, template_name, {'cnt':cnt, 'dnt':dnt})
 
     form = SearchDataForm(request.POST)
     if form.is_valid():
@@ -251,5 +252,23 @@ def donor_report(request):
         a['AD'] = list.StreetAddress + ',' + list.City
         results.append(a)
     return render(request, 'ics_tool/donor_report.html',{'Results': results})
+
+def donation_report(request):
+	
+	CatDonation = CatDonations.objects.all()
+	results = []
+	for list in CatDonation:
+		a = {}
+		a['DI'] = list.donationID   
+		a['GR'] = list.Grocery 
+		a['MT'] = list.Meat
+		a['BR'] = list.Bread
+		a['PR'] = list.Produce
+		a['TL'] = list.Toiletries
+		a['DIA'] = list.Diaper
+		a['PN'] = list.TotalPounds 
+		results.append(a)
+	return render(request,'ics_tool/donation_report.html',{'Results': results})
+	
 
 
